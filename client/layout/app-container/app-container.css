@@ -3,10 +3,13 @@ html, body {
   padding: 0;
   width: 100%;
   min-height: 100%;
-
-  background: #fff;
 }
 
 html {
   height: 100%;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100%;
 }

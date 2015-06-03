@@ -25,6 +25,6 @@ export default angular.module('app', [
   $resourceProvider
     .defaults.stripTrailingSlashes = true;
 
-}).directive('app-container', appContainer);
+}).directive('appContainer', appContainer);
 
 angular.bootstrap(document, ['app']);

@@ -7,7 +7,7 @@
     "build-sync": "npm run clean && node ./webpack/webpack-builder sync",
     "server": "npm run server-stop && forever start ./server/server.js",
     "server-stop": "forever stopall",
-    "dev": "npm run build-dev && npm run server && node ./webpack/webpack-server",
+    "dev": "npm run build-sync && npm run server && node ./webpack/webpack-server",
     "clean": "rimraf ./build/*"
   },
   "devDependencies": {
