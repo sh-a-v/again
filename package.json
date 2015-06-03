@@ -4,6 +4,7 @@
   "scripts": {
     "build": "npm run clean && node ./webpack/webpack-builder production",
     "build-dev": "npm run clean && node ./webpack/webpack-builder development",
+    "build-sync": "npm run clean && node ./webpack/webpack-builder sync",
     "server": "npm run server-stop && forever start ./server/server.js",
     "server-stop": "forever stopall",
     "dev": "npm run build-dev && npm run server && node ./webpack/webpack-server",
@@ -23,6 +24,7 @@
     "node-libs-browser": "^0.5.2",
     "path": "^0.11.14",
     "postcss-loader": "^0.4.3",
+    "raw-loader": "^0.5.1",
     "rimraf": "^2.3.4",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",

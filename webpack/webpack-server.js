@@ -3,8 +3,7 @@ var WebpackDevServer = require('webpack-dev-server');
 
 var serverConfig  = require('../server/server-config');
 var webpackConfig = require('./webpack-config').get({
-  env: 'development',
-  sync: true
+  env: 'sync'
 });
 
 var compiler = webpack(webpackConfig);

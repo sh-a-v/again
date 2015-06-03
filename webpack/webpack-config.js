@@ -11,12 +11,12 @@ var entryPoints  = require('./entry-points');
 var ENV  = 'development';
 var SYNC = false;
 
-var isDevelopment = function() {
-  return ENV === 'development';
+var isSync = function() {
+  return ENV === 'sync';
 };
 
-var isSync = function() {
-  return SYNC;
+var isDevelopment = function() {
+  return ENV === 'development' || isSync();
 };
 
 var getEntry = function() {
@@ -90,7 +90,7 @@ var getPlugins = function() {
     });
 
     plugins.push(
-      ngPlugin,
+      //ngPlugin,
       uglifyPlugin
     );
   }
@@ -101,17 +101,13 @@ var getPlugins = function() {
 var getJSLoader = function() {
   var loaders = ['babel-loader'];
 
-  if (isDevelopment() && isSync()) {
-
-  }
-
   return loaders.join('!');
 };
 
 var getCSSLoader = function() {
   var loaders = ['css-loader', 'postcss-loader'];
 
-  if (isDevelopment() && isSync()) {
+  if (isSync()) {
     loaders.unshift('style-loader');
 
     return loaders.join('!');
@@ -125,10 +121,6 @@ module.exports = {
 
     if (options && options.env) {
       ENV = options.env;
-    }
-
-    if (options && typeof options.sync === 'boolean') {
-      SYNC = options.sync;
     }
 
     return {
@@ -148,6 +140,10 @@ module.exports = {
           {
             test: /\.css$/,
             loader: getCSSLoader()
+          },
+          {
+            test: /\.html$/,
+            loader: 'raw'
           },
           {
             test: /\.(woff|jpe?g|png|gif|svg)$/,
@@ -173,7 +169,7 @@ module.exports = {
       output: {
         path: path.resolve('./build'),
         filename: getAssetName('js'),
-        publicPath: isDevelopment() && isSync() ? 'http://localhost:' + serverConfig.webpackPort + serverConfig.assetsPath : serverConfig.assetsPath
+        publicPath: isSync() ? 'http://localhost:' + serverConfig.webpackPort + serverConfig.assetsPath : serverConfig.assetsPath
       },
 
       plugins: getPlugins()
