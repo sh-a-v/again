@@ -55,7 +55,7 @@ var getPlugins = function() {
 
   chunks.forEach(function(chunk) {
     var htmlWebpackPlugin = new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './client/index.html',
       chunks: ['vendor', chunk],
       filename: chunk + '.index.html'
     });
@@ -135,7 +135,7 @@ module.exports = {
       entry: getEntry(),
 
       resolve: {
-        modulesDirectories: ['node_modules', 'src']
+        modulesDirectories: ['node_modules', 'client']
       },
 
       module: {
@@ -163,7 +163,7 @@ module.exports = {
       postcss: [
         cssnext({
           import: {
-            path: ['src']
+            path: ['client']
           }
         })
       ],

@@ -1,7 +1,7 @@
 'use strict';
 
 var entryPoints = [
-  './src/app.js'
+  './client/app.js'
 ];
 
 var getChunkFromEntryPoint = function(entryPoint) {

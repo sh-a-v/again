@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  expressPort: 1338,
-  webpackPort: 1339,
+  expressPort: 1440,
+  webpackPort: 1441,
   assetsPath: '/assets/'
 };
