@@ -10,7 +10,7 @@ class Header {
   }
 }
 
-export default angular.module('app', () => {
+export default angular.module('app').directive('header', () => {
   return {
     restrict: 'E',
     replace: true,

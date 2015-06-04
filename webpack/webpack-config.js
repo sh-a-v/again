@@ -90,7 +90,7 @@ var getPlugins = function() {
     });
 
     plugins.push(
-      //ngPlugin,
+      ngPlugin,
       uglifyPlugin
     );
   }
@@ -164,7 +164,7 @@ module.exports = {
         })
       ],
 
-      devtool: isDevelopment() ? 'eval' : '',
+      devtool: isSync() ? 'eval' : '',
 
       output: {
         path: path.resolve('./build'),
