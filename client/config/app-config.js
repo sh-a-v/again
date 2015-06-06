@@ -10,9 +10,17 @@ export default angular.module('app', [
 ]).config(($stateProvider, $locationProvider, $resourceProvider, $httpProvider) => {
 
   $stateProvider
-    .state('index', {
-      url: '/',
-      title: 'Index'
+    .state('list', {
+      url: '/'
+    })
+    .state('list.ideas', {
+      url: '/ideas'
+    })
+    .state('list.processes', {
+      url: '/processes'
+    })
+    .state('detail', {
+      url: '/:id'
     });
 
   $locationProvider
