@@ -1,4 +1,5 @@
-import './app-container.css';
+import './app-container.css'
+import './menu-wrapper.css'
 import template from './app-container.html'
 
 import angular from 'angular'

@@ -13,6 +13,7 @@ class MenuButton {
 export default angular.module('app').directive('menuButton', () => {
   return {
     restrict: 'E',
+    replace: true,
     template: temlate,
     bindToController: true,
     controller: MenuButton,

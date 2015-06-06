@@ -1,15 +1,24 @@
 .menu {
-  position: fixed;
-  top: 18px;
-  left: 0;
+  height: 28px;
+
+  overflow: hidden;
 
   border: 2px solid #000;
 }
 
-.menu.expanded {
+.menu.background {
   background-color: #fff;
+}
+
+.menu.no-border {
+  border-color: #fff;
+  border-bottom-color: #000;
 }
 
 .menu.expanded .title-arrow {
   display: none;
+}
+
+.menu-items {
+  font-size: 15px;
 }

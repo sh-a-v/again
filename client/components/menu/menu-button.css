@@ -4,3 +4,7 @@
   line-height: 28px;
   border: none;
 }
+
+.menu.expanded .menu-button.button:active {
+  background-color: transparent;
+}
