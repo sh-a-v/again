@@ -38,7 +38,7 @@ var getEntry = function() {
     'angular-ui-router',
     'angular-resource',
     'angular-touch',
-    'velocity-animation',
+    'velocity-animate',
     'styles/fonts.css'
   ];
 
