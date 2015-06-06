@@ -1,10 +1,11 @@
 import './menu.css'
 import template from './menu.html'
-import menuButton from './menu-button'
 
 import angular from 'angular'
 import velocity from 'velocity-animate'
+import menuButton from 'components/menu-button'
 import deviceSize from 'services/device-size'
+
 
 class Menu {
   constructor($scope, $element, deviceSize) {
