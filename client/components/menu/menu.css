@@ -1,0 +1,15 @@
+.menu {
+  position: fixed;
+  top: 18px;
+  left: 0;
+
+  border: 2px solid #000;
+}
+
+.menu.expanded {
+  background-color: #fff;
+}
+
+.menu.expanded .title-arrow {
+  display: none;
+}

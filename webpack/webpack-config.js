@@ -37,7 +37,8 @@ var getEntry = function() {
     'angular',
     'angular-ui-router',
     'angular-resource',
-    'angular-touch'
+    'angular-touch',
+    'styles/fonts.css'
   ];
 
   return entry;

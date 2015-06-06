@@ -2,9 +2,9 @@ import './app-container.css';
 import template from './app-container.html'
 
 import angular from 'angular'
-import header from 'components/header'
+import menu from 'components/menu'
 
-class AppContainerController {
+class AppContainer {
   constructor() {
 
   }
@@ -15,7 +15,7 @@ export default angular.module('app').directive('appContainer', () => {
     restrict: 'E',
     replace: true,
     template: template,
-    controller: AppContainerController,
+    controller: AppContainer,
     controllerAs: 'app',
     bindToController: true
   };
