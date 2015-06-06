@@ -19,6 +19,9 @@ export default angular.module('app', [
     .state('list.processes', {
       url: '/processes'
     })
+    .state('list.projects', {
+      url: '/projects'
+    })
     .state('detail', {
       url: '/:id'
     });
