@@ -1,8 +1,9 @@
+import angular from 'angular'
+
+import listItem from 'components/list-item'
+
 import 'list.css'
 import template from './list.html'
-
-import angular from 'angular'
-import listItem from 'components/list-item'
 
 class List {
   constructor() {
@@ -10,7 +11,9 @@ class List {
   }
 }
 
-export default angular.module('app').directive('list', () => {
+let moduleName = 'app.list';
+
+angular.module(moduleName, [listItem]).directive('list', () => {
   return {
     restrict: 'E',
     replace: true,
@@ -21,3 +24,5 @@ export default angular.module('app').directive('list', () => {
     controllerAs: 'list'
   }
 });
+
+export default moduleName;

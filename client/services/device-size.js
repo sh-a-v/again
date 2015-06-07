@@ -50,4 +50,8 @@ class DeviceSize {
   }
 }
 
-export default angular.module('app').service('deviceSize', DeviceSize);
+let moduleName = 'app.deviceSize';
+
+angular.module(moduleName, []).service('deviceSize', DeviceSize);
+
+export default moduleName;

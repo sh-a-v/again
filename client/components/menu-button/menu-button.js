@@ -1,16 +1,20 @@
+import angular from 'angular'
+import uiRouter from 'angular-ui-router'
+
+import button from 'components/button'
+
 import './menu-button.css'
 import temlate from './menu-button.html'
 
-import angular from 'angular'
-import button from 'components/button'
-
 class MenuButton {
-  constructor() {
-
+  constructor($state) {
+    this.$state = $state;
   }
 }
 
-export default angular.module('app').directive('menuButton', () => {
+let moduleName = 'app.menuButton';
+
+angular.module(moduleName, [uiRouter, button]).directive('menuButton', () => {
   return {
     restrict: 'E',
     replace: true,
@@ -19,4 +23,6 @@ export default angular.module('app').directive('menuButton', () => {
     controller: MenuButton,
     controllerAs: 'menuButton'
   };
-})
+});
+
+export default moduleName;

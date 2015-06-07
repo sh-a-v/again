@@ -1,11 +1,14 @@
-import './menu.css'
-import template from './menu.html'
+let moduleName = 'app.menu';
 
 import angular from 'angular'
 import velocity from 'velocity-animate'
+
+import button from 'components/button'
 import menuButton from 'components/menu-button'
 import deviceSize from 'services/device-size'
 
+import './menu.css'
+import template from './menu.html'
 
 class Menu {
   constructor($scope, $element, deviceSize) {
@@ -81,7 +84,7 @@ class Menu {
   }
 }
 
-export default angular.module('app').directive('menu', () => {
+angular.module(moduleName, [button, menuButton, deviceSize]).directive('menu', () => {
   return {
     restrict: 'E',
     replace: true,
@@ -92,3 +95,5 @@ export default angular.module('app').directive('menu', () => {
     controllerAs: 'menu'
   }
 });
+
+export default moduleName;

@@ -26,4 +26,8 @@ class DeviceType {
   }
 }
 
-export default angular.module('app').service('deviceType', DeviceType);
+let moduleName = 'app.deviceType';
+
+angular.module(moduleName, []).service('deviceType', DeviceType);
+
+export default moduleName;

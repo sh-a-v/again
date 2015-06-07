@@ -1,11 +1,12 @@
-import './app-container.css'
-import './menu-wrapper.css'
-import template from './app-container.html'
-
 import angular from 'angular'
+
 import menu from 'components/menu'
 import deviceType from 'services/device-type.js'
 import deviceSize from 'services/device-size.js'
+
+import './app-container.css'
+import './menu-wrapper.css'
+import template from './app-container.html'
 
 class AppContainer {
   constructor($rootScope, $scope, deviceType, deviceSize) {
@@ -34,7 +35,9 @@ class AppContainer {
   }
 }
 
-export default angular.module('app').directive('appContainer', () => {
+let moduleName = 'app.container';
+
+angular.module(moduleName, [menu, deviceType, deviceSize]).directive('appContainer', () => {
   return {
     restrict: 'E',
     replace: true,
@@ -45,3 +48,5 @@ export default angular.module('app').directive('appContainer', () => {
     controllerAs: 'app'
   };
 });
+
+export default moduleName;

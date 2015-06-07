@@ -1,7 +1,7 @@
+import angular from 'angular'
+
 import './list-item.css'
 import template from './list-item.html'
-
-import angular from 'angular'
 
 class ListItem {
   constructor() {
@@ -9,7 +9,9 @@ class ListItem {
   }
 }
 
-export default angular.module('app').directive('listItem', () => {
+let moduleName = 'app.listItem';
+
+angular.module(moduleName, []).directive('listItem', () => {
   return {
     restrict: 'E',
     replace: true,
@@ -20,3 +22,5 @@ export default angular.module('app').directive('listItem', () => {
     controllerAs: 'listItem'
   }
 });
+
+export default moduleName;

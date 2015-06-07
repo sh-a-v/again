@@ -1,7 +1,7 @@
+import angular from 'angular'
+
 import './detail.css'
 import template from './detail.html'
-
-import angular from 'angular'
 
 class Detail {
   constructor() {
@@ -9,7 +9,9 @@ class Detail {
   }
 }
 
-export default angular.module('app').directive('detail', () => {
+let moduleName = 'app.detail';
+
+angular.module(moduleName, []).directive('detail', () => {
   return {
     restrict: 'E',
     replace: true,
@@ -20,3 +22,5 @@ export default angular.module('app').directive('detail', () => {
     controllerAs: 'detail'
   }
 });
+
+export default moduleName;
