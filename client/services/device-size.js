@@ -29,10 +29,24 @@ class DeviceSize {
     };
 
     this.notify();
+
+    console.log('size updated');
   }
 
   notify() {
     this.$rootScope.$broadcast('device:resized');
+  }
+
+  isDesktop() {
+    return this.size.width > 1024;
+  }
+
+  isTablet() {
+    return this.size.width >= 640 && this.size.width <= 1024;
+  }
+
+  isMobile() {
+    return this.size.width < 640;
   }
 }
 
