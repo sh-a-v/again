@@ -20,5 +20,17 @@
 }
 
 .menu-items {
+  display: none;
+  margin: 40px 0;
+
+  text-align: center;
   font-size: 15px;
+}
+
+.menu.items-visible .menu-items {
+  display: block;
+}
+
+.menu-item {
+
 }

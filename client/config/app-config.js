@@ -14,22 +14,22 @@ export default angular.module('app', [
 
   $stateProvider
     .state('list', {
-      url: '/'
+      url: ''
     })
     .state('list.ideas', {
-      url: '/ideas',
+      url: 'ideas',
       title: 'Идеи'
     })
     .state('list.processes', {
-      url: '/processes',
+      url: 'processes',
       title: 'Процессы'
     })
     .state('list.projects', {
-      url: '/projects',
+      url: 'projects',
       title: 'Проекты'
     })
     .state('detail', {
-      url: '/:id'
+      url: ':id'
     });
 
   $locationProvider

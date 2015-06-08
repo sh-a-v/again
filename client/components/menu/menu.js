@@ -30,7 +30,7 @@ class Menu {
         this.$element.addClass('background');
       },
       complete: () => {
-        this.$element.addClass('no-border');
+        this.$element.addClass('no-border items-visible');
       }
     });
 
@@ -53,7 +53,7 @@ class Menu {
   }
 
   reset() {
-    this.$element.removeClass('background no-border');
+    this.$element.removeClass('background no-border items-visible');
     this.$element.attr('style', '');
   }
 
