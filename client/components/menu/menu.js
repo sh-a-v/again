@@ -24,20 +24,20 @@ class Menu {
       paddingTop: 20,
       paddingBottom: 20
     }, {
-      duration: 200,
+      duration: 150,
 
       begin: () => {
         this.$element.addClass('background');
       },
       complete: () => {
-        this.$element.addClass('no-border items-visible');
+        this.$element.addClass('items-visible');
       }
     });
 
     velocity(this.$element, {
       height: 200
     }, {
-      duration: 250
+      duration: 200
     });
   }
 
