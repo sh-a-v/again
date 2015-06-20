@@ -1,8 +1,8 @@
 import angular from 'angular'
 
 import menu from 'components/menu'
-import deviceType from 'services/device-type.js'
-import deviceSize from 'services/device-size.js'
+import deviceType from 'services/device-type'
+import deviceSize from 'services/device-size'
 
 import './app-container.css'
 import template from './app-container.html'

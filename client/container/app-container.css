@@ -29,3 +29,7 @@ html {
   -webkit-touch-callout: none;
   -webkit-font-smoothing: antialiased;
 }
+
+*:focus {
+  outline: 0;
+}

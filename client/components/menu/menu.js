@@ -2,6 +2,7 @@ import angular from 'angular'
 import velocity from 'velocity-animate'
 
 import button from 'components/button'
+import linkButton from 'components/link-button'
 import deviceSize from 'services/device-size'
 
 import './menu.css'
@@ -87,7 +88,7 @@ class Menu {
 
 let moduleName = 'app.menu';
 
-angular.module(moduleName, [button, deviceSize]).directive('menu', () => {
+angular.module(moduleName, [button, linkButton, deviceSize]).directive('menu', () => {
   return {
     restrict: 'E',
     replace: true,
