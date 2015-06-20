@@ -4,15 +4,17 @@
   font-weight: 300;
   src: url('./fonts/akzid-grtsk-pro-reg.woff') format('woff');
 }
-@font-face {
-  font-family: Akzi;
-  font-style: normal;
-  font-weight: 500;
-  src: url('./fonts/akzid-grtsk-pro-cnd.woff') format('woff');
-}
+
 @font-face {
   font-family: Akzi;
   font-style: normal;
   font-weight: 700;
   src: url('./fonts/akzid-grtsk-pro-med.woff') format('woff');
+}
+
+@font-face {
+  font-family: AkziCondensed;
+  font-style: normal;
+  font-weight: 300;
+  src: url('./fonts/akzid-grtsk-pro-reg-cnd.woff') format('woff');
 }
