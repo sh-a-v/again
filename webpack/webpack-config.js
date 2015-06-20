@@ -1,3 +1,4 @@
+var ip                = require('ip');
 var path              = require('path');
 var webpack           = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -5,28 +6,20 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
 var cssnext           = require('cssnext');
 
+var env          = require('../server/server-env');
 var serverConfig = require('../server/server-config');
 var entryPoints  = require('./entry-points');
 
-var ENV  = 'development';
-var SYNC = false;
-
-var isSync = function() {
-  return ENV === 'sync';
-};
-
-var isDevelopment = function() {
-  return ENV === 'development' || isSync();
-};
+var ipAddress = ip.address();
 
 var getEntry = function() {
   var entry = entryPoints.entry;
 
-  if (isDevelopment()) {
+  if (env.isDevelopment()) {
     for (var key in entry) {
       if (entry.hasOwnProperty(key)) {
         entry[key].unshift(
-          'webpack-dev-server/client?http://localhost:' + serverConfig.webpackPort,
+          'webpack-dev-server/client?http://' + ipAddress + ':' + serverConfig.webpackPort,
           'webpack/hot/dev-server'
         );
       }
@@ -47,7 +40,7 @@ var getEntry = function() {
 
 var getAssetName = function(ext) {
   var hash = ext === 'js' ? 'chunkhash' : 'contenthash';
-  var name = isDevelopment() ? '[name].build.' : '[name].build.[' + hash + '].';
+  var name = env.isDevelopment() ? '[name].build.' : '[name].build.[' + hash + '].';
   return name + ext;
 };
 
@@ -75,7 +68,7 @@ var getPlugins = function() {
     commonsChunkPlugin
   );
 
-  if (isDevelopment()) {
+  if (env.isDevelopment()) {
     var hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin();
     var noErrorsPlugin             = new webpack.NoErrorsPlugin();
 
@@ -109,7 +102,7 @@ var getJSLoader = function() {
 var getCSSLoader = function() {
   var loaders = ['css-loader', 'postcss-loader'];
 
-  if (isSync()) {
+  if (env.isSync()) {
     loaders.unshift('style-loader');
 
     return loaders.join('!');
@@ -119,62 +112,53 @@ var getCSSLoader = function() {
 };
 
 module.exports = {
-  get: function(options) {
+  entry: getEntry(),
 
-    if (options && options.env) {
-      ENV = options.env;
-    }
+  resolve: {
+    modulesDirectories: ['node_modules', 'client']
+  },
 
-    return {
-      entry: getEntry(),
-
-      resolve: {
-        modulesDirectories: ['node_modules', 'client']
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: getJSLoader()
       },
-
-      module: {
-        loaders: [
-          {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: getJSLoader()
-          },
-          {
-            test: /\.css$/,
-            loader: getCSSLoader()
-          },
-          {
-            test: /\.html$/,
-            loader: 'raw'
-          },
-          {
-            test: /\.(woff|jpe?g|png|gif|svg)$/,
-            loader: "url-loader?limit=100000"
-          },
-          {
-            test: /\.(woff|jpe?g|png|gif|svg)\?only-url$/,
-            loader: "file-loader"
-          }
-        ]
+      {
+        test: /\.css$/,
+        loader: getCSSLoader()
       },
-
-      postcss: [
-        cssnext({
-          import: {
-            path: ['client']
-          }
-        })
-      ],
-
-      devtool: isSync() ? 'eval' : '',
-
-      output: {
-        path: path.resolve('./build'),
-        filename: getAssetName('js'),
-        publicPath: isSync() ? 'http://localhost:' + serverConfig.webpackPort + serverConfig.assetsPath : serverConfig.assetsPath
+      {
+        test: /\.html$/,
+        loader: 'raw'
       },
+      {
+        test: /\.(woff|jpe?g|png|gif|svg)$/,
+        loader: "url-loader?limit=100000"
+      },
+      {
+        test: /\.(woff|jpe?g|png|gif|svg)\?only-url$/,
+        loader: "file-loader"
+      }
+    ]
+  },
 
-      plugins: getPlugins()
-    };
-  }
+  postcss: [
+    cssnext({
+      import: {
+        path: ['client']
+      }
+    })
+  ],
+
+  devtool: env.isSync() ? 'eval' : '',
+
+  output: {
+    path: path.resolve('./build'),
+    filename: getAssetName('js'),
+    publicPath: env.isSync() ? 'http://' + ipAddress + ':' + serverConfig.webpackPort + serverConfig.assetsPath : serverConfig.assetsPath
+  },
+
+  plugins: getPlugins()
 };

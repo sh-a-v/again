@@ -1,8 +1,6 @@
 var webpack = require('webpack');
 
-var webpackConfig = require('./webpack-config').get({
-  env: process.argv[2]
-});
+var webpackConfig = require('./webpack-config');
 
 var logError = function(err) {
   console.log('Error:', err);

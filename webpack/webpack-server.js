@@ -1,16 +1,16 @@
+var ip               = require('ip');
 var webpack          = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 
 var serverConfig  = require('../server/server-config');
-var webpackConfig = require('./webpack-config').get({
-  env: 'sync'
-});
+var webpackConfig = require('./webpack-config');
 
+var ipAddress = ip.address();
 var compiler = webpack(webpackConfig);
 
 var server = new WebpackDevServer(compiler, {
-  contentBase: 'http://localhost:' + serverConfig.expressPort,
-  publicPath: 'http://localhost:' + serverConfig.webpackPort + serverConfig.assetsPath,
+  contentBase: 'http://' + ipAddress + ':' + serverConfig.expressPort,
+  publicPath: 'http://' + ipAddress + ':' + serverConfig.webpackPort + serverConfig.assetsPath,
 
   historyApiFallback: true,
   hot: true,
@@ -20,8 +20,9 @@ var server = new WebpackDevServer(compiler, {
   }
 });
 
-server.listen(serverConfig.webpackPort, 'localhost', function(err) {
+server.listen(serverConfig.webpackPort, ipAddress, function(err) {
   setTimeout(function() {
+    console.log('Open http://' + ipAddress + ':' + serverConfig.expressPort);
     console.log('Open http://localhost:' + serverConfig.expressPort);
   }, 4000);
 
