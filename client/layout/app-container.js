@@ -5,7 +5,6 @@ import deviceType from 'services/device-type.js'
 import deviceSize from 'services/device-size.js'
 
 import './app-container.css'
-import './menu-wrapper.css'
 import template from './app-container.html'
 
 class AppContainer {

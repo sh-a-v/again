@@ -1,10 +1,7 @@
-let moduleName = 'app.menu';
-
 import angular from 'angular'
 import velocity from 'velocity-animate'
 
 import button from 'components/button'
-import menuButton from 'components/menu-button'
 import deviceSize from 'services/device-size'
 
 import './menu.css'
@@ -12,10 +9,10 @@ import template from './menu.html'
 
 class Menu {
   constructor($scope, $element, deviceSize) {
-    this.expanded = false;
+    this.expanded   = false;
 
     this.deviceSize = deviceSize;
-    this.$element = $element;
+    this.$element   = $element;
   }
 
   expandAnimate() {
@@ -84,7 +81,9 @@ class Menu {
   }
 }
 
-angular.module(moduleName, [button, menuButton, deviceSize]).directive('menu', () => {
+let moduleName = 'app.menu';
+
+angular.module(moduleName, [button, deviceSize]).directive('menu', () => {
   return {
     restrict: 'E',
     replace: true,

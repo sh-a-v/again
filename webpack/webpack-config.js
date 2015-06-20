@@ -5,6 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ngAnnotatePlugin  = require('ng-annotate-webpack-plugin');
 var cssnext           = require('cssnext');
+var cssnested         = require('postcss-nested');
 
 var env          = require('../server/server-env');
 var serverConfig = require('../server/server-config');
@@ -32,7 +33,8 @@ var getEntry = function() {
     'angular-resource',
     'angular-touch',
     'velocity-animate',
-    'styles/fonts.css'
+    'styles/fonts.css',
+    'styles/icons.css'
   ];
 
   return entry;
@@ -145,6 +147,7 @@ module.exports = {
   },
 
   postcss: [
+    cssnested,
     cssnext({
       import: {
         path: ['client']

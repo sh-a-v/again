@@ -34,6 +34,7 @@
     "node-libs-browser": "^0.5.2",
     "path": "^0.11.14",
     "postcss-loader": "^0.4.3",
+    "postcss-nested": "^0.3.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.3.4",
     "style-loader": "^0.12.3",

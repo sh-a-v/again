@@ -1,9 +1,19 @@
-<div class="menu" ng-class="{expanded: menu.expanded}">
-  <menu-button></menu-button>
+<div class="menu-wrapper">
+  <div class="menu" ng-class="{expanded: menu.expanded}">
 
-  <div class="menu-items">
-    <button ui-sref="list.ideas" class="menu-item" text="Идеи"></button>
-    <button ui-sref="list.processes" class="menu-item" text="Процессы"></button>
-    <button ui-sref="list.projects" class="menu-item" text="Проекты"></button>
+    <div class="menu-button button no-border">
+      За<span class='icon-arrow-right'></span>ново
+    </div>
+
+    <div class="menu-content">
+
+
+      <div class="menu-items">
+        <button ui-sref="list.ideas" class="menu-item" text="Идеи"></button>
+        <button ui-sref="list.processes" class="menu-item" text="Процессы"></button>
+        <button ui-sref="list.projects" class="menu-item" text="Проекты"></button>
+      </div>
+    </div>
+
   </div>
 </div>
