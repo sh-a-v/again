@@ -5,7 +5,7 @@ import template from './button.html'
 
 class Button {
   constructor($scope, $element) {
-    console.log('button');
+    this.$element = $element;
   }
 }
 
@@ -16,8 +16,9 @@ angular.module(moduleName, []).directive('button', () => {
     restrict: 'E',
     template: template,
     replace: true,
+    transclude: true,
     scope: {
-      text: '@'
+      'noBorder': '@'
     },
     bindToController: true,
     controller: Button,

@@ -3,14 +3,16 @@
   height: 28px;
   padding: 0 12px;
   box-sizing: border-box;
-  vertical-align: top;
 
+  justify-content: center;
   border: 2px solid #000;
 
   font-size: 13px;
-  line-height: 28px;
+  line-height: 24px;
   text-transform: uppercase;
   letter-spacing: 1px;
+
+  cursor: pointer;
 
   &.no-border {
     border-color: transparent;

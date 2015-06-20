@@ -12,7 +12,8 @@ class Menu {
     this.expanded   = false;
 
     this.deviceSize = deviceSize;
-    this.$element   = $element;
+    this.$scope     = $scope;
+    this.$element   = $element.children();
   }
 
   expandAnimate() {
@@ -24,10 +25,10 @@ class Menu {
       duration: 150,
 
       begin: () => {
-        this.$element.addClass('background');
+        this.expanded = true;
       },
       complete: () => {
-        this.$element.addClass('items-visible');
+
       }
     });
 
@@ -44,13 +45,14 @@ class Menu {
     }, {
       duration: 50,
       complete: () => {
+        this.expanded = false;
         this.reset();
       }
     })
   }
 
   reset() {
-    this.$element.removeClass('background no-border items-visible');
+    this.update();
     this.$element.attr('style', '');
   }
 
@@ -59,7 +61,6 @@ class Menu {
       return;
     }
 
-    this.expanded = true;
     this.expandAnimate();
   }
 
@@ -68,12 +69,15 @@ class Menu {
       return;
     }
 
-    this.expanded = false;
     this.collapseAnimate();
   }
 
   toggle() {
     this.isExpanded() ? this.collapse() : this.expand();
+  }
+
+  update() {
+    this.$scope.$digest();
   }
 
   isExpanded() {

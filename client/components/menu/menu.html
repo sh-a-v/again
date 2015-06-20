@@ -1,17 +1,17 @@
 <div class="menu-wrapper">
-  <div class="menu" ng-class="{expanded: menu.expanded}">
+  <div class="menu" ng-class="{expanded: menu.expanded}" ng-click="menu.toggle()">
 
-    <div class="menu-button button no-border">
+    <button class="menu-button" no-border="true">
       За<span class='icon-arrow-right'></span>ново
-    </div>
+    </button>
 
-    <div class="menu-content">
+    <div class="menu-content" ng-click="$event.stopPropagation()">
 
 
       <div class="menu-items">
-        <button ui-sref="list.ideas" class="menu-item" text="Идеи"></button>
-        <button ui-sref="list.processes" class="menu-item" text="Процессы"></button>
-        <button ui-sref="list.projects" class="menu-item" text="Проекты"></button>
+        <div class="menu-item"><a ui-sref="list.ideas" class="button">Идеи</a></div>
+        <div class="menu-item"><button ui-sref="list.processes" class="">Процессы</button></div>
+        <div class="menu-item"><button ui-sref="list.projects" class="">Проекты</button></div>
       </div>
     </div>
 
