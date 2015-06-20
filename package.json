@@ -1,5 +1,5 @@
 {
-  "name": "builder",
+  "name": "again",
   "version": "0.0.1",
   "scripts": {
     "build": "npm run clean && node ./webpack/webpack-builder",
