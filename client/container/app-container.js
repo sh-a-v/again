@@ -1,6 +1,7 @@
 import angular from 'angular'
 
 import menu from 'components/menu'
+import menuButton from 'components/menu-button'
 import deviceType from 'services/device-type'
 import deviceSize from 'services/device-size'
 
@@ -36,7 +37,7 @@ class AppContainer {
 
 let moduleName = 'app.container';
 
-angular.module(moduleName, [menu, deviceType, deviceSize]).directive('appContainer', () => {
+angular.module(moduleName, [menu, menuButton, deviceType, deviceSize]).directive('appContainer', () => {
   return {
     restrict: 'E',
     replace: true,

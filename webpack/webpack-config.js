@@ -33,6 +33,7 @@ var getEntry = function() {
     'angular-resource',
     'angular-touch',
     'velocity-animate',
+    'velocity-animate/velocity.ui.js',
     'styles/fonts.css',
     'styles/icons.css'
   ];

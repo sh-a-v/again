@@ -17,39 +17,48 @@ class Menu {
     this.$element   = $element.children();
   }
 
+  get width() {
+    return this.deviceSize.width - 4;
+  }
+
+  get height() {
+    return 260;
+  }
+
+  setContentSize() {
+    this.$content = this.$content || angular.element(this.$element[0].querySelector('.menu-content'));
+
+    this.$content.css({
+      width: `${this.width}px`,
+      height: `${this.height}px`
+    });
+  }
+
   expandAnimate() {
     velocity(this.$element, {
-      width: this.deviceSize.width - 4,
-      paddingTop: 20,
-      paddingBottom: 20
+      width: this.width,
+      height: this.height
     }, {
-      duration: 150,
+      duration: 1500,
 
       begin: () => {
         this.expanded = true;
+        this.setContentSize();
       },
       complete: () => {
 
       }
     });
-
-    velocity(this.$element, {
-      height: 200
-    }, {
-      duration: 200
-    });
   }
 
   collapseAnimate() {
-    velocity(this.$element, {
-      opacity: 0
-    }, {
-      duration: 50,
+    velocity(this.$element, 'reverse', {
+      duration: 150,
       complete: () => {
         this.expanded = false;
         this.reset();
       }
-    })
+    });
   }
 
   reset() {

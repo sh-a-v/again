@@ -14,6 +14,7 @@
   position: relative;
   z-index: 9;
 
+  display: none;
   height: 24px;
   overflow: hidden;
 
@@ -50,11 +51,6 @@
   }
 }
 
-.menu-button {
-  min-width: 82px;
-  margin: -2px 0 0 -2px;
-}
-
 .menu-content {
   position: absolute;
   top: 0;
@@ -68,6 +64,8 @@
 
   background-color: #fff;
 
+  transform: none;
+
   .expanded & {
     display: block;
   }
@@ -75,7 +73,7 @@
 
 .menu-items {
   display: block;
-  margin: 40px 0;
+  margin: 72px 0;
 
   text-align: center;
 }
@@ -83,4 +81,9 @@
 .menu-item {
   display: block;
   margin: 15px 0;
+}
+
+.menu-home {
+  position: fixed;
+  top: 22px;
 }
